@@ -8,6 +8,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @OA\Info(
+ *     title="API de Sauvegarde et d’Organisation de Liens",
+ *     version="1.0.0",
+ *     description="Cette API permet aux utilisateurs de sauvegarder, catégoriser et organiser des liens. Elle inclut des fonctionnalités pour la gestion des utilisateurs, des catégories personnalisées, des tags, et d'autres outils d'organisation.",
+ *     @OA\Contact(
+ *         email="support@example.com",
+ *         name="Support API"
+ *     ),
+ *     @OA\License(
+ *         name="MIT",
+ *         url="https://opensource.org/licenses/MIT"
+ *     )
+ * )
+ *
+ * @OA\Server(
+ *     url="http://localhost:8000/api",
+ *     description="Serveur local de développement"
+ * )
+ *
+ * @OA\Server(
+ *     url="https://api.sauvegarde-liens.com",
+ *     description="Serveur de production"
+ * )
+ */
 class AuthController extends Controller
 {
     /**
