@@ -10,6 +10,33 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/categories",
+     *     summary="Get categories and their links",
+     *     tags={"Categories"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Categories and their links retrieved successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="success",
+     *                 type="boolean"
+     *             ),
+     *             @OA\Property(
+     *                 property="response",
+     *                 type="array",
+     *                 @OA\Items(ref="#/components/schemas/Category")
+     *             ),
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string"
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function index()
     {
         $categories = Category::where(function ($query) {
@@ -28,6 +55,43 @@ class CategoryController extends Controller
         ], 200);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/categories",
+     *     summary="Create a new category",
+     *     tags={"Categories"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="name",
+     *                 type="string",
+     *                 description="Name of the category"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Category created successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="success",
+     *                 type="boolean"
+     *             ),
+     *             @OA\Property(
+     *                 property="response",
+     *                 ref="#/components/schemas/Category"
+     *             ),
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string"
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -46,6 +110,50 @@ class CategoryController extends Controller
         ], 201);
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/categories/{id}",
+     *     summary="Update an existing category",
+     *     tags={"Categories"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the category to update"
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="name",
+     *                 type="string",
+     *                 description="Name of the category"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Category updated successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="success",
+     *                 type="boolean"
+     *             ),
+     *             @OA\Property(
+     *                 property="response",
+     *                 ref="#/components/schemas/Category"
+     *             ),
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string"
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -68,6 +176,35 @@ class CategoryController extends Controller
         ], 200);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/api/categories/{id}",
+     *     summary="Delete a category",
+     *     tags={"Categories"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the category to delete"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Category deleted successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="success",
+     *                 type="boolean"
+     *             ),
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string"
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function destroy($id)
     {
         $category = Category::where('id', $id)
@@ -82,6 +219,48 @@ class CategoryController extends Controller
         ], 200);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/categories/{id}/links",
+     *     summary="Get links by category",
+     *     tags={"Categories"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the category"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Links retrieved successfully for the specified category",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="success",
+     *                 type="boolean"
+     *             ),
+     *             @OA\Property(
+     *                 property="response",
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="category",
+     *                     ref="#/components/schemas/Category"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="links",
+     *                     type="array",
+     *                     @OA\Items(ref="#/components/schemas/Link")
+     *                 )
+     *             ),
+     *             @OA\Property(
+     *                 property="message",
+     *                 type="string"
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function links_by_category($id)
     {
         $category = Category::where(function ($query) {
