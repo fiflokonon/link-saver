@@ -13,11 +13,17 @@ Route::get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::post('/api/profile', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::post('/api/profile-photo', [AuthController::class, 'updateProfilePhoto'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::post('/api/profile', [AuthController::class, 'updateProfile']);
+    Route::post('/api/profile-photo', [AuthController::class, 'updateProfilePhoto']);
+
+    Route::get('/links', [LinkController::class, 'user_links']);
+    Route::get('/links/{id}', [LinkController::class, 'get_link']);
     Route::post('/links', [LinkController::class, 'store']);
     Route::put('/links/{id}', [LinkController::class, 'update']);
     Route::delete('/links/{id}', [LinkController::class, 'destroy']);

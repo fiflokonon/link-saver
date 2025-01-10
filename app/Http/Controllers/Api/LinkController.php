@@ -103,4 +103,14 @@ class LinkController extends Controller
         }
     }
 
+    public function user_links()
+    {
+        $links = Link::where('user_id', Auth::id())->paginate(10);
+        return response()->json([
+            'success' => true,
+            'response' => $links,
+            'message' => 'Liste des liens récupérée avec succès'
+        ], 200);
+    }
+
 }
