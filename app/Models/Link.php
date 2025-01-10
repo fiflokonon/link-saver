@@ -15,6 +15,8 @@ class Link extends Model
         'note',
         'is_favorite',
         'is_archived',
+        'user_id',
+        'category_id'
     ];
 
     public function user()
@@ -22,9 +24,14 @@ class Link extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'link_tags')->withTimestamps();
     }
 
 }

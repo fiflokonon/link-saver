@@ -19,9 +19,12 @@ class Tag extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Relation many-to-many avec les liens.
+     */
     public function links()
     {
-        return $this->belongsToMany(Link::class);
+        return $this->belongsToMany(Link::class, 'link_tags')->withTimestamps();
     }
 
 }
