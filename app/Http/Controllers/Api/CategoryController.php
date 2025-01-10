@@ -15,6 +15,7 @@ class CategoryController extends Controller
      *     path="/api/categories",
      *     summary="Get categories and their links",
      *     tags={"Categories"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Categories and their links retrieved successfully",
@@ -60,6 +61,7 @@ class CategoryController extends Controller
      *     path="/api/categories",
      *     summary="Create a new category",
      *     tags={"Categories"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -115,6 +117,7 @@ class CategoryController extends Controller
      *     path="/api/categories/{id}",
      *     summary="Update an existing category",
      *     tags={"Categories"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -181,6 +184,7 @@ class CategoryController extends Controller
      *     path="/api/categories/{id}",
      *     summary="Delete a category",
      *     tags={"Categories"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -224,6 +228,7 @@ class CategoryController extends Controller
      *     path="/api/categories/{id}/links",
      *     summary="Get links by category",
      *     tags={"Categories"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

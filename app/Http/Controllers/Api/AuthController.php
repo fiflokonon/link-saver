@@ -10,11 +10,11 @@ use Illuminate\Validation\ValidationException;
 
 /**
  * @OA\Info(
- *     title="API de Sauvegarde et d’Organisation de Liens",
+ *     title="Link Saver API Documentation",
  *     version="1.0.0",
  *     description="Cette API permet aux utilisateurs de sauvegarder, catégoriser et organiser des liens. Elle inclut des fonctionnalités pour la gestion des utilisateurs, des catégories personnalisées, des tags, et d'autres outils d'organisation.",
  *     @OA\Contact(
- *         email="support@example.com",
+ *         email="fiflokonon@gmail.com",
  *         name="Support API"
  *     ),
  *     @OA\License(
@@ -24,12 +24,12 @@ use Illuminate\Validation\ValidationException;
  * )
  *
  * @OA\Server(
- *     url="http://localhost:8000/api",
+ *     url="http://localhost:8000",
  *     description="Serveur local de développement"
  * )
  *
  * @OA\Server(
- *     url="https://api.sauvegarde-liens.com",
+ *     url="https://link-saver.fifonsi.net",
  *     description="Serveur de production"
  * )
  */
@@ -159,12 +159,7 @@ class AuthController extends Controller
      *     tags={"Auth"},
      *     summary="Log out user",
      *     description="Logs out the authenticated user and deletes their tokens.",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             @OA\Property(property="token", type="string", example="user_token")
-     *         )
-     *     ),
+     *      security={{"bearerAuth":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Successfully logged out",
@@ -196,6 +191,7 @@ class AuthController extends Controller
      *     tags={"Profile"},
      *     summary="Update profile photo",
      *     description="Updates the profile photo of the authenticated user.",
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(
@@ -244,6 +240,7 @@ class AuthController extends Controller
      *     tags={"Profile"},
      *     summary="Update user profile",
      *     description="Updates the profile information of the authenticated user.",
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\MediaType(

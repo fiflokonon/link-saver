@@ -16,6 +16,7 @@ class TagController extends Controller
      *     path="/api/tags",
      *     summary="Create a new tag",
      *     tags={"Tags"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -71,6 +72,7 @@ class TagController extends Controller
      *     path="/api/tags/{id}",
      *     summary="Update an existing tag",
      *     tags={"Tags"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -135,6 +137,7 @@ class TagController extends Controller
      *     path="/api/tags/{id}",
      *     summary="Delete a tag",
      *     tags={"Tags"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -177,6 +180,7 @@ class TagController extends Controller
      *     path="/api/tags",
      *     summary="Get all tags",
      *     tags={"Tags"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="Tags and their links retrieved successfully",
@@ -219,6 +223,7 @@ class TagController extends Controller
      *     path="/api/tags/{id}/links",
      *     summary="Get links by tag",
      *     tags={"Tags"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",

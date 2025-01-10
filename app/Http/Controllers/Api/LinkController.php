@@ -15,6 +15,7 @@ class LinkController extends Controller
      *     path="/api/links",
      *     summary="Create a new link",
      *     tags={"Links"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -87,6 +88,7 @@ class LinkController extends Controller
      *     path="/api/links/{id}",
      *     summary="Update an existing link",
      *     tags={"Links"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -167,6 +169,7 @@ class LinkController extends Controller
      *     path="/api/links/{id}",
      *     summary="Delete a link",
      *     tags={"Links"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -209,6 +212,7 @@ class LinkController extends Controller
      *     path="/api/links/{id}",
      *     summary="Get a specific link",
      *     tags={"Links"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -257,6 +261,7 @@ class LinkController extends Controller
      *     path="/api/links",
      *     summary="Get all user links",
      *     tags={"Links"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="List of links retrieved successfully",
