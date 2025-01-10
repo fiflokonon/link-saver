@@ -10,6 +10,43 @@ use Illuminate\Support\Facades\Auth;
 class LinkController extends Controller
 {
 
+    /**
+     * @OA\Post(
+     *     path="/api/links",
+     *     summary="Create a new link",
+     *     tags={"Links"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"url"},
+     *             @OA\Property(property="url", type="string", format="url", example="https://example.com"),
+     *             @OA\Property(property="title", type="string", example="Example Title"),
+     *             @OA\Property(property="note", type="string", example="Example Note"),
+     *             @OA\Property(property="is_favorite", type="boolean", example=false),
+     *             @OA\Property(property="is_archived", type="boolean", example=false),
+     *             @OA\Property(property="category_id", type="integer", example=1),
+     *             @OA\Property(property="tags", type="array", @OA\Items(type="integer", example=1))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Link created successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="response", ref="#/components/schemas/Link"),
+     *             @OA\Property(property="message", type="string", example="Lien créé avec succès")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *             @OA\Property(property="errors", type="object")
+     *         )
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -45,6 +82,57 @@ class LinkController extends Controller
     }
 
 
+    /**
+     * @OA\Put(
+     *     path="/api/links/{id}",
+     *     summary="Update an existing link",
+     *     tags={"Links"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the link to update"
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="url", type="string", format="url", example="https://example.com"),
+     *             @OA\Property(property="title", type="string", example="Example Title"),
+     *             @OA\Property(property="note", type="string", example="Example Note"),
+     *             @OA\Property(property="is_favorite", type="boolean", example=false),
+     *             @OA\Property(property="is_archived", type="boolean", example=false),
+     *             @OA\Property(property="category_id", type="integer", example=1),
+     *             @OA\Property(property="tags", type="array", @OA\Items(type="integer", example=1))
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Link updated successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="response", ref="#/components/schemas/Link"),
+     *             @OA\Property(property="message", type="string", example="Lien mis à jour avec succès")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Link not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Lien non trouvé")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *             @OA\Property(property="errors", type="object")
+     *         )
+     *     )
+     * )
+     */
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -74,6 +162,36 @@ class LinkController extends Controller
     }
 
 
+    /**
+     * @OA\Delete(
+     *     path="/api/links/{id}",
+     *     summary="Delete a link",
+     *     tags={"Links"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the link to delete"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Link deleted successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="message", type="string", example="Lien supprimé avec succès")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Link not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Lien non trouvé")
+     *         )
+     *     )
+     * )
+     */
     public function destroy($id)
     {
         $link = Link::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
@@ -86,6 +204,37 @@ class LinkController extends Controller
         ], 200);
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/links/{id}",
+     *     summary="Get a specific link",
+     *     tags={"Links"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="ID of the link to retrieve"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Link retrieved successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="response", ref="#/components/schemas/Link"),
+     *             @OA\Property(property="message", type="string", example="Lien récupéré avec succès")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Link not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Lien non trouvé")
+     *         )
+     *     )
+     * )
+     */
     public function get_link($id)
     {
         $link = Link::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
@@ -103,6 +252,29 @@ class LinkController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/links",
+     *     summary="Get all user links",
+     *     tags={"Links"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of links retrieved successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="response", type="array", @OA\Items(ref="#/components/schemas/Link")),
+     *             @OA\Property(property="message", type="string", example="Liste des liens récupérée avec succès")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Unauthenticated.")
+     *         )
+     *     )
+     * )
+     */
     public function user_links()
     {
         $links = Link::where('user_id', Auth::id())->paginate(10);

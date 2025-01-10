@@ -379,10 +379,452 @@
                     }
                 }
             }
+        },
+        "/api/links": {
+            "get": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Get all user links",
+                "operationId": "7dca2d2c9972f71a95aa91aa7c450042",
+                "responses": {
+                    "200": {
+                        "description": "List of links retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Link"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Liste des liens récupérée avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Create a new link",
+                "operationId": "6eeb1c7544b34d81d9e15a08581c4960",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "url"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Example Title"
+                                    },
+                                    "note": {
+                                        "type": "string",
+                                        "example": "Example Note"
+                                    },
+                                    "is_favorite": {
+                                        "type": "boolean",
+                                        "example": false
+                                    },
+                                    "is_archived": {
+                                        "type": "boolean",
+                                        "example": false
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Link created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "$ref": "#/components/schemas/Link"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien créé avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/links/{id}": {
+            "get": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Get a specific link",
+                "operationId": "dfc47c9d90fd671f282b6f822719dbdd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the link to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Link retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "$ref": "#/components/schemas/Link"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien récupéré avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien non trouvé"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Update an existing link",
+                "operationId": "dc612cbaa81f96edb8cf65dfd9efefdf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the link to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Example Title"
+                                    },
+                                    "note": {
+                                        "type": "string",
+                                        "example": "Example Note"
+                                    },
+                                    "is_favorite": {
+                                        "type": "boolean",
+                                        "example": false
+                                    },
+                                    "is_archived": {
+                                        "type": "boolean",
+                                        "example": false
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "tags": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Link updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "$ref": "#/components/schemas/Link"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien mis à jour avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien non trouvé"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Delete a link",
+                "operationId": "efc285357077dd67640a917b91b62011",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the link to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Link deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien supprimé avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien non trouvé"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
+            "Link": {
+                "title": "Link",
+                "required": [
+                    "url",
+                    "title",
+                    "user_id",
+                    "category_id"
+                ],
+                "properties": {
+                    "url": {
+                        "description": "URL of the link",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "Title of the link",
+                        "type": "string"
+                    },
+                    "note": {
+                        "description": "Note about the link",
+                        "type": "string"
+                    },
+                    "is_favorite": {
+                        "description": "Indicates if the link is a favorite",
+                        "type": "boolean"
+                    },
+                    "is_archived": {
+                        "description": "Indicates if the link is archived",
+                        "type": "boolean"
+                    },
+                    "user_id": {
+                        "description": "ID of the user who owns the link",
+                        "type": "integer"
+                    },
+                    "category_id": {
+                        "description": "ID of the category the link belongs to",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
             "User": {
                 "properties": {
                     "id": {
@@ -433,6 +875,10 @@
         {
             "name": "Profile",
             "description": "Profile"
+        },
+        {
+            "name": "Links",
+            "description": "Links"
         }
     ]
 }
