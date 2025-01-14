@@ -26,7 +26,11 @@ class LinkController extends Controller
      *             @OA\Property(property="is_favorite", type="boolean", example=false),
      *             @OA\Property(property="is_archived", type="boolean", example=false),
      *             @OA\Property(property="category_id", type="integer", example=1),
-     *             @OA\Property(property="tags", type="array", @OA\Items(type="integer", example=1))
+     *             @OA\Property(property="tags", type="array", @OA\Items(type="integer", example=1)),
+     *             @OA\Property(property="alerts", type="array", @OA\Items(
+     *                 @OA\Property(property="reminder_at", type="string", format="date-time", example="2025-01-14T16:31:58Z"),
+     *                 @OA\Property(property="message", type="string", example="Example alert message")
+     *             ))
      *         )
      *     ),
      *     @OA\Response(
@@ -59,6 +63,9 @@ class LinkController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id',
+            'alerts' => 'nullable|array',
+            'alerts.*.reminder_at' => 'required_with:alerts|date',
+            'alerts.*.message' => 'nullable|string',
         ]);
 
         $link = Link::create([
@@ -75,9 +82,15 @@ class LinkController extends Controller
             $link->tags()->sync($validated['tags']);
         }
 
+        if (!empty($validated['alerts'])) {
+            foreach ($validated['alerts'] as $alertData) {
+                $link->alerts()->create($alertData);
+            }
+        }
+
         return response()->json([
             'success' => true,
-            'response' => $link->load('tags'),
+            'response' => $link->load('tags', 'alerts'),
             'message' => 'Lien créé avec succès'
         ], 201);
     }
@@ -163,7 +176,6 @@ class LinkController extends Controller
         ], 200);
     }
 
-
     /**
      * @OA\Delete(
      *     path="/api/links/{id}",
@@ -245,7 +257,7 @@ class LinkController extends Controller
         if ($link) {
             return response()->json([
                 'success' => true,
-                'response' => $link->load('tags'),
+                'response' => $link->load('tags', 'alerts'),
                 'message' => 'Lien récupéré avec succès'
             ], 200);
         } else {

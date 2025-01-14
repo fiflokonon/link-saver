@@ -24,6 +24,427 @@
         }
     ],
     "paths": {
+        "/alerts": {
+            "get": {
+                "tags": [
+                    "Alerts"
+                ],
+                "summary": "Get all alerts for the authenticated user",
+                "operationId": "761f6279117c3162bb673a3db335196b",
+                "responses": {
+                    "200": {
+                        "description": "List of alerts retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Alert"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Liste des alertes récupérée avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Alerts"
+                ],
+                "summary": "Create a new alert",
+                "operationId": "da90d001c754180408bfd0f756fff911",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "link_id",
+                                    "reminder_at",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "link_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "reminder_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2023-12-01T12:00:00Z"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "This is a reminder message."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Alert created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "$ref": "#/components/schemas/Alert"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Alerte ajoutée avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de validation"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized or link not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Lien non trouvé ou non autorisé"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alerts/{id}": {
+            "put": {
+                "tags": [
+                    "Alerts"
+                ],
+                "summary": "Update an existing alert",
+                "operationId": "895bdd9e8daa79a4ccc24c138ce7bb53",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the alert to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "reminder_at",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "reminder_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2023-12-01T12:00:00Z"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "This is an updated reminder message."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Alert updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "$ref": "#/components/schemas/Alert"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Alerte mise à jour avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de validation"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized or alert not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Alerte non trouvée ou non autorisée"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Alerts"
+                ],
+                "summary": "Delete an alert",
+                "operationId": "62ca9cdb13567f2d94c6f27351ae801c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the alert to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Alert deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Alerte supprimée avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized or alert not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Alerte non trouvée ou non autorisée"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alerts/{id}/change-status": {
+            "put": {
+                "tags": [
+                    "Alerts"
+                ],
+                "summary": "Toggle the status of an alert",
+                "operationId": "72555ba1598f9cdc721da3c13750d39d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the alert to toggle status",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Alert status updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "response": {
+                                            "$ref": "#/components/schemas/Alert"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Statut de l'alerte mis à jour avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorized or alert not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Alerte non trouvée ou non autorisée"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Alert is already obsolete",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "L'alerte est déjà obsolète"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/register": {
             "post": {
                 "tags": [
@@ -739,6 +1160,23 @@
                                             "type": "integer",
                                             "example": 1
                                         }
+                                    },
+                                    "alerts": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "reminder_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-01-14T16:31:58Z"
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Example alert message"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
                                     }
                                 },
                                 "type": "object"
@@ -1427,6 +1865,34 @@
     },
     "components": {
         "schemas": {
+            "Alert": {
+                "title": "Alert",
+                "description": "Alert model",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "link_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "reminder_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-12-01T12:00:00Z"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "This is a reminder message."
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                },
+                "type": "object"
+            },
             "Category": {
                 "title": "Category",
                 "required": [
@@ -1576,6 +2042,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Alerts",
+            "description": "Alerts"
+        },
         {
             "name": "Auth",
             "description": "Auth"

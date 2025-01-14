@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\LinkController;
@@ -41,6 +42,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/tags/{id}', [TagController::class, 'destroy']);
     Route::get('/tags/{id}/links', [TagController::class, 'links_by_tag']);
     Route::get('/tags', [TagController::class, 'index']);
+
+    Route::get('/alerts', [AlertController::class, 'index']);
+    Route::post('/alerts', [AlertController::class, 'store']);
+    Route::put('/alerts/{id}', [AlertController::class, 'update']);
+    Route::delete('/alerts/{id}', [AlertController::class, 'destroy']);
+    Route::get('/alerts/{id}/change-status', [AlertController::class, 'change_status']);
+
 });
 
 
