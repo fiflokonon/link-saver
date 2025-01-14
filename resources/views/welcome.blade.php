@@ -214,7 +214,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fr-content" href="/api/documentation">Documentation</a>
-                    <a class="nav-link en-content" href="/api/documentations">Documentation</a>
+                    <a class="nav-link en-content" href="/api/documentation">Documentation</a>
                 </li>
             </ul>
             <div class="d-flex align-items-center">
