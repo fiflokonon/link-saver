@@ -53,6 +53,7 @@ class AlertController extends Controller
      *     path="/alerts",
      *     summary="Create a new alert",
      *     tags={"Alerts"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -129,6 +130,7 @@ class AlertController extends Controller
      *     path="/alerts/{id}",
      *     summary="Update an existing alert",
      *     tags={"Alerts"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -205,6 +207,7 @@ class AlertController extends Controller
      *     path="/alerts/{id}",
      *     summary="Delete an alert",
      *     tags={"Alerts"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -249,6 +252,7 @@ class AlertController extends Controller
      *     path="/alerts/{id}/change-status",
      *     summary="Toggle the status of an alert",
      *     tags={"Alerts"},
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
