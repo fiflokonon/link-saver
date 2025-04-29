@@ -25,6 +25,16 @@ class Category extends Model
      *         description="Name of the category"
      *     ),
      *     @OA\Property(
+     *          property="color",
+     *          type="string",
+     *          description="Color of the category"
+     *      ),
+     *      @OA\Property(
+     *           property="icon",
+     *           type="string",
+     *           description="Icon of the category"
+     *       ),
+     *     @OA\Property(
      *         property="created_at",
      *         type="string",
      *         format="date-time",
@@ -47,6 +57,8 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = [
         'name',
+        'color',
+        'icon',
     ];
 
     public function user()

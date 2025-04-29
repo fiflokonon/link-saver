@@ -37,12 +37,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
     Route::get('/categories/{id}/links', [CategoryController::class, 'links_by_category']);
 
-    Route::post('/tags', [TagController::class, 'store']);
-    Route::put('/tags/{id}', [TagController::class, 'update']);
-    Route::delete('/tags/{id}', [TagController::class, 'destroy']);
-    Route::get('/tags/{id}/links', [TagController::class, 'links_by_tag']);
-    Route::get('/tags', [TagController::class, 'index']);
-
     Route::get('/alerts', [AlertController::class, 'index']);
     Route::post('/alerts', [AlertController::class, 'store']);
     Route::put('/alerts/{id}', [AlertController::class, 'update']);
