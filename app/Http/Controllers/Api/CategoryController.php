@@ -98,11 +98,15 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'color' => 'nullable|string|max:7', // Couleur au format hexadécimal
+            'icon' => 'nullable|string|max:255', // Icône (nom de l'icône ou URL)
         ]);
 
         $category = Category::create([
             'name' => $validated['name'],
             'user_id' => Auth::id(), // Si c'est une catégorie personnalisée par l'utilisateur
+            'color' => $validated['color'] ?? null, // Couleur par défaut
+            'icon' => $validated['icon'] ?? null, // Icône par défaut
         ]);
 
         return response()->json([
