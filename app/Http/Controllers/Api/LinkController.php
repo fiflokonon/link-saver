@@ -95,7 +95,6 @@ class LinkController extends Controller
         ], 201);
     }
 
-
     /**
      * @OA\Put(
      *     path="/api/links/{id}",
