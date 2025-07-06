@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('code', 3)->unique(); // Code ISO Alpha-3 (exemple : BEN pour Bénin)
+            $table->string('flag');
+            $table->foreignId('continent_id');
             $table->timestamps();
         });
     }

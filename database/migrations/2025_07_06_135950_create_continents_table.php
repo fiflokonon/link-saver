@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('continents', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('code', 3)->unique();
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('reset_password_keys', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
+            $table->string('key')->unique();
+            $table->dateTime('expires_at');
+            $table->boolean('is_used')->default(0);
             $table->timestamps();
         });
     }

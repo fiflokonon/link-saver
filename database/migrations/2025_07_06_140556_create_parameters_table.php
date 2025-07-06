@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('parameters', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('title');
+            $table->string('value');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
