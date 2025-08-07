@@ -346,10 +346,11 @@
                             <img src="/dashboard/assets/images/brand/logo-dark.png" class="header-brand-img dark-logo" alt="">
                         </a>
                     </div>
-                    <form class="login-form validate-form">
-                            <span class="login-form-title pb-5">
-                                Se connecter à LinkSaver
-                            </span>
+                    <form class="login-form validate-form" action="{{ route('login') }}" method="POST">
+                        @csrf
+                        <span class="login-form-title pb-5">
+                            Se connecter à LinkSaver
+                        </span>
                         <div class="panel panel-primary">
                             <div class="panel-body tabs-menu-body p-0 pt-5">
                                 <div class="tab-content">
@@ -360,19 +361,19 @@
                                                class="input-group-text bg-white text-muted">
                                                 <i class="zmdi zmdi-email text-muted" aria-hidden="true"></i>
                                             </a>
-                                            <input class="input100 border-start-0 form-control ms-0" type="email" placeholder="Email">
+                                            <input class="input100 border-start-0 form-control ms-0" name="email" type="email" placeholder="Email">
                                         </div>
                                         <div class="wrap-input validate-input input-group" id="Password-toggle">
                                             <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                                 <i class="zmdi zmdi-eye-off text-muted" aria-hidden="true"></i>
                                             </a>
-                                            <input class="input100 border-start-0 form-control ms-0" type="password" placeholder="Mot de passe">
+                                            <input class="input100 border-start-0 form-control ms-0" name="password" type="password" placeholder="Mot de passe">
                                         </div>
                                         <div class="text-end pt-4">
                                             <p class="mb-0"><a href="" class="text-primary ms-1">Mot de passe oublié ?</a></p>
                                         </div>
                                         <div class="container-login100-form-btn">
-                                            <a href="" class="login100-form-btn btn-primary">Se connecter</a>
+                                            <button type="submit" class="login100-form-btn btn-primary">Se connecter</button>
                                         </div>
 {{--                                        <div class="text-center pt-3">--}}
 {{--                                            <p class="text-dark mb-0">Don't have account?<a href="" class="text-primary ms-1">Sign UP</a></p>--}}
