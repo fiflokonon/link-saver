@@ -351,14 +351,6 @@
                                 Se connecter à LinkSaver
                             </span>
                         <div class="panel panel-primary">
-                            <div class="tab-menu-heading">
-                                <div class="tabs-menu1">
-                                    <!-- Tabs -->
-                                    <ul class="nav panel-tabs justify-content-center">
-                                        <li class="mx-0"><a href="authentication-signin.html#tab5" class="active" data-bs-toggle="tab">Email</a></li>
-                                    </ul>
-                                </div>
-                            </div>
                             <div class="panel-body tabs-menu-body p-0 pt-5">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab5">
@@ -380,7 +372,7 @@
                                             <p class="mb-0"><a href="" class="text-primary ms-1">Mot de passe oublié ?</a></p>
                                         </div>
                                         <div class="container-login100-form-btn">
-                                            <a href="" class="login100-form-btn btn-primary">Login</a>
+                                            <a href="" class="login100-form-btn btn-primary">Se connecter</a>
                                         </div>
 {{--                                        <div class="text-center pt-3">--}}
 {{--                                            <p class="text-dark mb-0">Don't have account?<a href="" class="text-primary ms-1">Sign UP</a></p>--}}
