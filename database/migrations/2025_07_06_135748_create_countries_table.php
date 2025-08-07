@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code', 3)->unique(); // Code ISO Alpha-3 (exemple : BEN pour Bénin)
-            $table->string('flag');
             $table->foreignId('continent_id');
             $table->timestamps();
         });
