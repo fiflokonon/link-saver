@@ -1,194 +1,432 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8" />
-    <title>CKANET-PRO - Inscription</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Apexadmin – Bootstrap 5  Admin & Dashboard Template">
+    <meta name="author" content="Techne Infosys">
+    <meta name="keywords"
+          content="admin template, Apexadmin admin template, dashboard template, flat admin template, responsive admin template, web app">
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/landing/assets/images/fav.png">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="/dashboard/assets/images/brand/favicon.ico">
 
-    <!-- Theme Config Js -->
-    <script src="/dashboard/assets/js/hyper-config.js"></script>
+    <!-- TITLE -->
+    <title>Apexadmin – Bootstrap 5 Admin & Dashboard Template </title>
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="/dashboard/assets/css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- App css -->
-    <link href="/dashboard/assets/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <!-- STYLE CSS -->
+    <link href="/dashboard/assets/css/style.css" rel="stylesheet">
 
-    <!-- Icons css -->
-    <link href="/dashboard/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Plugins CSS -->
+    <link href="/dashboard/assets/css/plugins.css" rel="stylesheet">
+
+    <!--- FONT-ICONS CSS -->
+    <link href="/dashboard/assets/css/icons.css" rel="stylesheet">
+
+    <!-- INTERNAL Switcher css -->
+    <link href="/dashboard/assets/switcher/css/switcher.css" rel="stylesheet">
+    <link href="/dashboard/assets/switcher/demo.css" rel="stylesheet">
 </head>
 
-<body class="authentication-bg">
+<body class="app sidebar-mini ltr light-mode login-img">
 
-<div class="position-absolute start-0 end-0 start-0 bottom-0 w-100 h-100">
-    <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 800 800'>
-        <g fill-opacity='0.22'>
-            <circle style="fill: rgba(var(--ct-primary-rgb), 0.1);" cx='400' cy='400' r='600' />
-            <circle style="fill: rgba(var(--ct-primary-rgb), 0.2);" cx='400' cy='400' r='500' />
-            <circle style="fill: rgba(var(--ct-primary-rgb), 0.3);" cx='400' cy='400' r='300' />
-            <circle style="fill: rgba(var(--ct-primary-rgb), 0.4);" cx='400' cy='400' r='200' />
-            <circle style="fill: rgba(var(--ct-primary-rgb), 0.5);" cx='400' cy='400' r='100' />
-        </g>
-    </svg>
-</div>
-
-<div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xxl-4 col-lg-5">
-                <div class="card">
-                    <!-- Logo-->
-                    <div class="card-header py-4 text-center bg-success">
-                        <a href="index.html">
-                            <span><img src="/landing/assets/images/logo-white.png" alt="logo" height="50"></span>
-                        </a>
-                    </div>
-
-                    <div class="card-body p-4">
-
-                        <div class="text-center w-100 m-auto">
-                            <h4 class="text-dark-50 text-center mt-0 fw-bold">S'inscrire</h4>
-                            <p class="text-muted mb-4">Entrez votre adresse e-mail et votre mot de passe pour accéder au panneau d’administration </p>
+<div class="switcher-wrapper">
+    <div class="demo_changer">
+        <div class="p-4 m-0 lh-1 border-bottom template-customizer-header position-relative py-3 d-flex align-items-center justify-content-between">
+            <div>
+                <h3 class="template-customizer-t-panel_header mb-2">Template Customizer</h3>
+                <p class="template-customizer-t-panel_sub_header mb-0">Customize and preview in real time</p>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <a href="javascript:void(0)" onclick="localStorage.clear();
+                    document.querySelector('html').style = '';
+                    names() ;
+                    resetData() ;" class="text-danger"><i class="fe fe-refresh-ccw fs-17 text-danger"></i></a>
+            </div>
+        </div>
+        <div class="form_holder sidebar-right1 ps ps--active-y">
+            <div class="row">
+                <div class="predefined_styles">
+                    <div class="swichermainleft">
+                        <h4> <i class="ti ti-layout-navbar"></i> Navigation Style</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle d-flex"> <span class="me-auto">Vertical Menu</span>
+                                    <label class="switch switch-square">
+                                        <input type="radio" name="onoffswitch15" id="myonoffswitch34" class="switch-input" checked>
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2"> <span class="me-auto">Horizontal Click
+                                            Menu</span>
+                                    <label for="myonoffswitch35" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch15" id="myonoffswitch35" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                        <span class="switch-on"></span>
+                                                        <span class="switch-off"></span>
+                                                    </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2"> <span class="me-auto">Horizontal Hover
+                                            Menu</span>
+                                    <label for="myonoffswitch111" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch15" id="myonoffswitch111" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-
-                        <form action="pages-register.html#">
-
-                            <div class="mb-3">
-                                <label for="fullname" class="form-label">Full Name</label>
-                                <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                    </div>
+                    <div class="swichermainleft">
+                        <h4> <i class="ti ti-directions"></i> LTR and RTL VERSIONS</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle d-flex"> <span class="me-auto">LTR Version</span>
+                                    <label for="myonoffswitch23" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch7" id="myonoffswitch23" class="switch-input" checked="">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">RTL Version</span>
+                                    <label for="myonoffswitch24" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch7" id="myonoffswitch24" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="emailaddress" class="form-label">Email address</label>
-                                <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="swichermainleft">
+                        <h4> <i class="ti ti-color-swatch"></i> Light Theme Style</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle d-flex"> <span class="me-auto">Light Theme</span>
+                                    <label for="myonoffswitch1"  class="switch switch-square">
+                                        <input type="radio" name="onoffswitch1" id="myonoffswitch1" class="switch-input" checked="">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex"> <span class="me-auto">Light Primary</span>
+                                    <div class=""> <input class="w-30p h-30 input-color-picker color-primary-light"
+                                                          value="#0d9c1e" id="colorID" oninput="changePrimaryColor()" type="color"
+                                                          data-id="bg-color" data-id1="bg-hover" data-id2="bg-border"
+                                                          data-id7="transparentcolor" name="lightPrimary"> </div>
+                                </div>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" placeholder="Enter your password">
-                                    <div class="input-group-text" data-password="false">
-                                        <span class="password-eye"></span>
+                        </div>
+                    </div>
+                    <div class="swichermainleft">
+                        <h4> <i class="ti ti-moon-stars"></i> Dark Theme Style</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle d-flex mt-2"> <span class="me-auto">Dark Theme</span>
+                                    <label for="myonoffswitch2" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch1" id="myonoffswitch2" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2"> <span class="me-auto">Dark Primary</span>
+                                    <div class=""> <input class="w-30p h-30 input-dark-color-picker color-primary-dark"
+                                                          value="#0d9c1e" id="darkPrimaryColorID" oninput="darkPrimaryColor()"
+                                                          type="color" data-id="bg-color" data-id1="bg-hover" data-id2="bg-border"
+                                                          data-id3="primary" data-id8="transparentcolor" name="darkPrimary">
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="swichermainleft">
+                        <h4>Menu Styles</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle lightMenu d-flex"> <span class="me-auto">Light Menu</span>
+                                    <label for="myonoffswitch3" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch2" id="myonoffswitch3" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle colorMenu d-flex mt-2">
+                                    <span class="me-auto">Color Menu</span>
+                                    <label for="myonoffswitch4" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch2" id="myonoffswitch4" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle darkMenu d-flex mt-2">
+                                    <span class="me-auto">Dark Menu</span>
+                                    <label for="myonoffswitch5" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch2" id="myonoffswitch5" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
 
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="checkbox-signup">
-                                    <label class="form-check-label" for="checkbox-signup">I accept <a href="pages-register.html#" class="text-muted">Terms and Conditions</a></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swichermainleft">
+                        <h4> <i class="ti ti-brush"></i> Header Styles</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle lightHeader d-flex">
+                                    <span class="me-auto">Light Header</span>
+                                    <label for="myonoffswitch6" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch3" id="myonoffswitch6" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle  colorHeader d-flex mt-2">
+                                    <span class="me-auto">Color Header</span>
+                                    <label for="myonoffswitch7" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch3" id="myonoffswitch7" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle darkHeader d-flex mt-2">
+                                    <span class="me-auto">Dark Header</span>
+                                    <label for="myonoffswitch8" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch3" id="myonoffswitch8" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="mb-3 text-center">
-                                <button class="btn btn-primary" type="submit"> Sign Up </button>
-                            </div>
-
-                        </form>
-                    </div> <!-- end card-body -->
-                </div>
-                <!-- end card -->
-
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <p class="text-muted">Already have account? <a href="pages-login.html" class="text-muted ms-1"><b>Log In</b></a></p>
-                    </div> <!-- end col-->
-                </div>
-                <!-- end row -->
-
-            </div> <!-- end col -->
-        </div>
-        <!-- end row -->
-    </div>
-    <!-- end container -->
-</div>
-<!-- end page -->
-
-<footer class="footer footer-alt">
-    2018 -
-    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
-</footer>
-
-<!-- Vendor js -->
-<script src="/dashboard/assets/js/vendor.min.js"></script>
-
-<!-- App js -->
-<script src="/dashboard/assets/js/app.min.js"></script>
-
-</body>
-
-</html>
-{{--<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    <div class="swichermainleft">
+                        <h4> <i class="ti ti-adjustments-horizontal"></i> Layout Positions</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle d-flex">
+                                    <span class="me-auto">Fixed</span>
+                                    <label for="myonoffswitch11" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch5" id="myonoffswitch11" class="switch-input" checked="">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">Scrollable</span>
+                                    <label for="myonoffswitch12" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch5" id="myonoffswitch12" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    </div>
+                    <div class="swichermainleft leftmenu-styles">
+                        <h4> <i class="ti ti-layout-sidebar"></i> Sidemenu layout Styles</h4>
+                        <div class="skin-body">
+                            <div class="switch_section">
+                                <div class="switch-toggle d-flex">
+                                    <span class="me-auto">Default Menu</span>
+                                    <label for="myonoffswitch13" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch6" id="myonoffswitch13" class="switch-input default-menu" checked="">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">Icon with Text</span>
+                                    <label for="myonoffswitch14" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch6" id="myonoffswitch14" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">Icon Overlay</span>
+                                    <label for="myonoffswitch15" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch6" id="myonoffswitch15" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">Closed Sidemenu</span>
+                                    <label for="myonoffswitch16" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch6" id="myonoffswitch16" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">Hover Submenu</span>
+                                    <label for="myonoffswitch17" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch6" id="myonoffswitch17" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
+                                <div class="switch-toggle d-flex mt-2">
+                                    <span class="me-auto">Double Menu Style </span>
+                                    <label for="doublemenu-switch" class="switch switch-square">
+                                        <input type="radio" name="onoffswitch6"  id="doublemenu-switch" class="switch-input">
+                                        <span class="switch-toggle-slider">
+                                                <span class="switch-on"></span>
+                                                <span class="switch-off"></span>
+                                            </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>--}}
+</div>
+
+<div class="">
+    <!-- PAGE -->
+    <div class="page auth-page">
+        <div class="">
+            <!-- Theme-Layout -->
+
+            <!-- CONTAINER OPEN -->
+            <div class="login-container">
+                <div class="card login-wrap-main  p-6">
+                    <div class="text-center mb-5 auth-logo">
+                        <a href="index.html">
+                            <img src="/dashboard/assets/images/brand/logo-white.png" class="header-brand-img light-logo" alt="">
+                            <img src="/dashboard/assets/images/brand/logo-dark.png" class="header-brand-img dark-logo" alt="">
+                        </a>
+                    </div>
+                    <form class="login-form validate-form">
+                            <span class="login-form-title">
+									Registration
+								</span>
+                        <div class="wrap-input validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
+                            <div class="input-group-text bg-white text-muted">
+                                <i class="mdi mdi-account" aria-hidden="true"></i>
+                            </div>
+                            <input class="input100 border-start-0 ms-0 form-control" type="text" placeholder="User name">
+                        </div>
+                        <div class="wrap-input validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
+                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                            </a>
+                            <input class="input100 border-start-0 ms-0 form-control" type="email" placeholder="Email">
+                        </div>
+                        <div class="wrap-input validate-input input-group" id="Password-toggle">
+                            <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                                <i class="zmdi zmdi-eye-off" aria-hidden="true"></i>
+                            </a>
+                            <input class="input100 border-start-0 ms-0 form-control" type="password" placeholder="Password">
+                        </div>
+                        <label class="custom-control custom-checkbox mt-4">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-label">Agree the <a href="register.html#">terms and policy</a></span>
+                        </label>
+                        <div class="container-login100-form-btn">
+                            <a href="index.html" class="login100-form-btn btn-primary">
+                                Register
+                            </a>
+                        </div>
+                        <div class="text-center pt-3">
+                            <p class="text-dark mb-0 d-inline-flex">Already have account ?<a href="authentication-signin.html" class="text-primary ms-1">Sign In</a></p>
+                        </div>
+                        <label class="login-social-icon"><span>Register with Social</span></label>
+                        <div class="d-flex justify-content-center">
+                            <a href="javascript:void(0)">
+                                <div class="social-login me-4 text-center">
+                                    <i class="fa fa-google"></i>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <div class="social-login me-4 text-center">
+                                    <i class="fa fa-facebook"></i>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <div class="social-login text-center">
+                                    <i class="fa fa-twitter"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- CONTAINER CLOSED -->
+        </div>
+    </div>
+    <!-- End PAGE -->
+
+</div>
+
+
+<!--{ JQUERY JS }-->
+<script src="/dashboard/assets/js/jquery.min.js"></script>
+<!--{ BOOTSTRAP JS }-->
+<script src="/dashboard/assets/js/plugins/bootstrap/js/popper.min.js"></script>
+<script src="/dashboard/assets/js/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Perfect SCROLLBAR JS-->
+<script src="/dashboard/assets/js/plugins/p-scroll/perfect-scrollbar.js"></script>
+<!--{ Color Theme js }-->
+<script src="/dashboard/assets/js/themeColors.js"></script>
+<!-- { Show Password js } -->
+<script src="/dashboard/assets/js/show-password.min.js"></script>
+<!--{ Custom-switcher }-->
+<script src="/dashboard/assets/js/custom-swicher.js"></script>
+<!--{ Switcher js }-->
+<script src="/dashboard/assets/switcher/js/switcher.js"></script>
+</body>
+
+</html>
