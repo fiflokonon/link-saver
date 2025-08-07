@@ -72,4 +72,10 @@ class Link extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function visits()
+    {
+        return $this->morphMany(LinkVisit::class, 'linkable');
+    }
+
+
 }

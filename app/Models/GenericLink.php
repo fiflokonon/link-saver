@@ -15,6 +15,7 @@ class GenericLink extends Model
         'url',
         'icon',
         'country_id',
+        'category_id',
         'user_id',
         'validation_status',
         'status'
@@ -29,5 +30,16 @@ class GenericLink extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function visits()
+    {
+        return $this->morphMany(LinkVisit::class, 'linkable');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(GenericCategory::class, 'category_id');
+    }
+
 
 }
