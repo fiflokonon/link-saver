@@ -16,10 +16,13 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone')->unique();
-            $table->string('role')->default('user');
+            $table->foreignId('role_id');
+            $table->foreignId('country_id')->nullable();
             $table->string('email')->unique();
+            $table->boolean('verified')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
