@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('url');
             $table->string('title')->nullable();
-            $table->text('note')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('is_favorite')->default(false);
             $table->boolean('is_archived')->default(false);
             $table->SoftDeletes();

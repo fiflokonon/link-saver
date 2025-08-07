@@ -10,8 +10,7 @@ class Country extends Model
     protected $fillable = [
         'name',
         'code',
-        'continent_id',
-        'flag'
+        'continent_id'
     ];
 
     public function continent()

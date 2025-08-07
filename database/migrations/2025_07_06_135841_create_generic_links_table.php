@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('generic_links', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('url');
+            $table->string('icon')->nullable();
+            $table->foreignId('country_id')->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->string('validation_status')->default('pending'); // 'pending', 'approved', 'rejected'
+            $table->boolean('status')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
