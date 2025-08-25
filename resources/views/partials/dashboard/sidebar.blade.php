@@ -59,7 +59,7 @@
                     <h3>Système</h3>
                 </li>
                 <li class="slide">
-                    <a class="sidenav-menu-item" href="private-chat.html"><i class="side-menu__icon  fe fe-flag"></i><span class="side-menu__label">Pays</span>
+                    <a class="sidenav-menu-item" href="{{ route('countries') }}"><i class="side-menu__icon  fe fe-flag"></i><span class="side-menu__label">Pays</span>
                     </a>
                 </li>
                 <li class="slide">

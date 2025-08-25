@@ -14,6 +14,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['auth']] ,
     function() {
-        Route::get('countries', [CountryController::class, 'index'])->name('countries.index');
+        Route::get('countries', [CountryController::class, 'index'])->name('countries');
     }
 );
