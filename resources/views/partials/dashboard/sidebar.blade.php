@@ -58,33 +58,17 @@
                 <li class="sub-category">
                     <h3>Système</h3>
                 </li>
-
                 <li class="slide">
-                    <a class="sidenav-menu-item" data-bs-toggle="slide" href="javascript:void(0)">
-                        <i class="side-menu__icon fe fe-slack"></i>
-                        <span class="side-menu__label">Application</span>
-                        <i class="angle fe fe-chevron-right"></i>
+                    <a class="sidenav-menu-item" href="private-chat.html"><i class="side-menu__icon  fe fe-flag"></i><span class="side-menu__label">Pays</span>
                     </a>
-                    <ul class="slide-menu">
-                        <li class="panel sidetab-menu">
-                            <div class="panel-body tabs-menu-body p-0 border-0">
-                                <div class="tab-content">
-                                    <div class="tab-pane active">
-                                        <ul class="sidemenu-list">
-                                            <li class="side-menu-label1"><a href="javascript:void(0)">Application</a></li>
-                                            <li><a href="app-kanban.html" class="slide-item">Kanban</a></li>
-                                            <li><a href="calendar.html" class="slide-item">Calendar</a></li>
-                                            <li><a href="app-calendar.html" class="slide-item">Event  Calendar</a></li>
-                                            <li><a href="app-list-calendar.html" class="slide-item">List Calendar</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </li>
                 <li class="slide">
-                    <a class="sidenav-menu-item" href="private-chat.html"><i class="side-menu__icon  ti ti-brand-hipchat"></i><span class="side-menu__label">Chat</span>
+                    <a class="sidenav-menu-item" href="private-chat.html"><i class="side-menu__icon  fe fe-aperture"></i><span class="side-menu__label">Roles</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="sidenav-menu-item" href="private-chat.html"><i class="side-menu__icon  fe fe-settings"></i><span class="side-menu__label">Paramètres</span>
                     </a>
                 </li>
 
