@@ -1,5 +1,5 @@
 <!-- BACK-TO-TOP -->
-<a href="index.html#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
 <!--{ JQUERY JS }-->
 <script src="/dashboard/assets/js/jquery.min.js"></script>
@@ -52,3 +52,26 @@
 <script src="/dashboard/assets/js/custom-swicher.js"></script>
 <!--{ Switcher js }-->
 <script src="/dashboard/assets/switcher/js/switcher.js"></script>
+<!-- { DATA TABLE JS } -->
+<script src="/dashboard/assets/js/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/dataTables.buttons.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/jszip.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/buttons.html5.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/buttons.print.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/js/buttons.colVis.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/dataTables.responsive.min.js"></script>
+<script src="/dashboard/assets/js/plugins/datatable/responsive.bootstrap5.min.js"></script>
+<script src="/dashboard/assets/js/table-data.js"></script>
+<script>
+    // Table js
+    $(document).ready(function () {
+        $('#UserList').DataTable({
+
+        });
+    });
+</script>
+
