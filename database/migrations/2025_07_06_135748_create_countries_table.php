@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code', 3)->unique(); // Code ISO Alpha-3 (exemple : BEN pour Bénin)
-            $table->foreignId('continent_id');
+            $table->string('phone_code')->nullable(); // Indicatif téléphonique (exemple : +229 pour Bénin)
+            $table->string('currency')->nullable(); // Devise (exemple : XOF pour Franc CFA)
+            $table->string('flag')->nullable(); // URL ou chemin vers l'image du drapeau)
+            $table->softDeletes();
             $table->timestamps();
         });
     }

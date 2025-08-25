@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(GenericCategorySeeder::class);
         $this->call(CategorySeeder::class);
-        $this->call(ContinentSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);

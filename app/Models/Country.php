@@ -3,21 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Country extends Model implements HasMedia
+class Country extends Model
 {
-    use InteractsWithMedia;
+    use SoftDeletes;
+
     protected $table = 'countries';
     protected $fillable = [
         'name',
         'code',
-        'continent_id'
+        'phone_code',
+        'currency',
+        'flag',
     ];
 
-    public function continent()
-    {
-        return $this->belongsTo(Continent::class);
-    }
 }
