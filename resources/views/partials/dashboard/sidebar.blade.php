@@ -40,7 +40,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active">
                                         <ul class="sidemenu-list">
-                                            <li><a href="app-kanban.html" class="slide-item">Liste</a></li>
+                                            <li><a href="{{ route('generic-links.index') }}" class="slide-item">Liste</a></li>
                                             <li><a href="calendar.html" class="slide-item">Catégories</a></li>
                                         </ul>
                                     </div>

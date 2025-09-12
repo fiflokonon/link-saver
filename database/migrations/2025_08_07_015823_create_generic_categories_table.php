@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->text('description')->nullable();
             $table->boolean('status')->default(true); // true for active, false for inactive
+            $table->softDeletes();
             $table->timestamps();
         });
     }
