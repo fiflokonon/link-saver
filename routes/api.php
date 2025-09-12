@@ -3,8 +3,10 @@
 use App\Http\Controllers\Api\AlertController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\GenericLinkController;
 use App\Http\Controllers\Api\LinkController;
-use App\Http\Controllers\Api\TagController;
+use App\Http\Controllers\Api\CountryController;
+use App\Models\GenericCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +18,9 @@ Route::get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('/api/profile', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
-Route::post('/api/profile-photo', [AuthController::class, 'updateProfilePhoto'])->middleware('auth:sanctum');
+
+Route::get("/countries", [CountryController::class, 'index']);
+Route::get("/countries/{id}/links", [GenericLinkController::class, 'links_by_country']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);

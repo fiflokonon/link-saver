@@ -1077,6 +1077,73 @@
                 ]
             }
         },
+        "/api/countries/{countryId}/links": {
+            "get": {
+                "tags": [
+                    "Links"
+                ],
+                "summary": "Récupérer les liens par pays",
+                "description": "Retourne la liste des liens génériques filtrés par pays",
+                "operationId": "getLinksByCountry",
+                "parameters": [
+                    {
+                        "name": "countryId",
+                        "in": "path",
+                        "description": "ID du pays",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Liste des liens récupérés avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "title": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    },
+                                                    "url": {
+                                                        "type": "string"
+                                                    },
+                                                    "icon": {
+                                                        "type": "string"
+                                                    },
+                                                    "category": {
+                                                        "type": "object"
+                                                    },
+                                                    "country": {
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Pays non trouvé"
+                    }
+                }
+            }
+        },
         "/api/links": {
             "get": {
                 "tags": [
@@ -1520,367 +1587,6 @@
                     }
                 ]
             }
-        },
-        "/api/tags": {
-            "get": {
-                "tags": [
-                    "Tags"
-                ],
-                "summary": "Get all tags",
-                "operationId": "65f85cc85cd13d2454b6c88ffff5cc3a",
-                "responses": {
-                    "200": {
-                        "description": "Tags and their links retrieved successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "response": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Tag"
-                                            }
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Tags et leurs liens récupérés avec succès"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "Tags"
-                ],
-                "summary": "Create a new tag",
-                "operationId": "467bf3e5824fd78f9cdfb70c0ba9b172",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "example tag"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Tag created successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "response": {
-                                            "$ref": "#/components/schemas/Tag"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Tag ajouté avec succès"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/tags/{id}": {
-            "put": {
-                "tags": [
-                    "Tags"
-                ],
-                "summary": "Update an existing tag",
-                "operationId": "ad61cc1b60600b578f626a615aec1e46",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the tag to update",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "updated tag"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Tag updated successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "response": {
-                                            "$ref": "#/components/schemas/Tag"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Tag modifié avec succès"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Tags"
-                ],
-                "summary": "Delete a tag",
-                "operationId": "556f3044efa071c0209e19df24a54e3d",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the tag to delete",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Tag deleted successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Tag supprimé avec succès"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Tag not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Tag non trouvé"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/api/tags/{id}/links": {
-            "get": {
-                "tags": [
-                    "Tags"
-                ],
-                "summary": "Get links by tag",
-                "operationId": "ad5e003bbcdee459723abb94a6608b7f",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the tag to retrieve links for",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Links retrieved successfully for the specified tag",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "response": {
-                                            "properties": {
-                                                "tag": {
-                                                    "$ref": "#/components/schemas/Tag"
-                                                },
-                                                "links": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "$ref": "#/components/schemas/Link"
-                                                    }
-                                                }
-                                            },
-                                            "type": "object"
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Liens récupérés avec succès pour le tag spécifié"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Tag not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Tag non trouvé"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
         }
     },
     "components": {
@@ -1925,6 +1631,14 @@
                     },
                     "name": {
                         "description": "Name of the category",
+                        "type": "string"
+                    },
+                    "color": {
+                        "description": "Color of the category",
+                        "type": "string"
+                    },
+                    "icon": {
+                        "description": "Icon of the category",
                         "type": "string"
                     },
                     "created_at": {
@@ -1981,40 +1695,6 @@
                     "category_id": {
                         "description": "ID of the category the link belongs to",
                         "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "Tag": {
-                "title": "Tag",
-                "description": "Tag model",
-                "properties": {
-                    "id": {
-                        "description": "ID of the tag",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "Name of the tag",
-                        "type": "string"
-                    },
-                    "status": {
-                        "description": "Status of the tag",
-                        "type": "string"
-                    },
-                    "created_at": {
-                        "description": "Creation timestamp",
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "updated_at": {
-                        "description": "Update timestamp",
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "deleted_at": {
-                        "description": "Deletion timestamp",
-                        "type": "string",
-                        "format": "date-time"
                     }
                 },
                 "type": "object"
@@ -2081,10 +1761,6 @@
         {
             "name": "Links",
             "description": "Links"
-        },
-        {
-            "name": "Tags",
-            "description": "Tags"
         }
     ]
 }
