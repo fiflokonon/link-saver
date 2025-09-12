@@ -41,7 +41,7 @@
                                     <div class="tab-pane active">
                                         <ul class="sidemenu-list">
                                             <li><a href="{{ route('generic-links.index') }}" class="slide-item">Liste</a></li>
-                                            <li><a href="calendar.html" class="slide-item">Catégories</a></li>
+                                            <li><a href="{{ route('generic-categories.index') }}" class="slide-item">Catégories</a></li>
                                         </ul>
                                     </div>
                                 </div>
