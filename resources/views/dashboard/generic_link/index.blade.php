@@ -218,8 +218,8 @@
                                 <div class="mb-3">
                                     <label for="add_status" class="form-label">Status</label>
                                     <select class="form-select" id="add_status" name="status">
-                                        <option value="active">Actif</option>
-                                        <option value="inactive">Inactif</option>
+                                        <option value="1">Actif</option>
+                                        <option value="0">Inactif</option>
                                     </select>
                                 </div>
                             </div>

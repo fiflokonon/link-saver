@@ -26,9 +26,9 @@ class GenericLinkController extends Controller
             'title' => 'required|string|max:255',
             'url' => 'required|url|max:2048',
             'description' => 'nullable|string',
-            'category_id' => 'nullable|exists:categories,id',
+            'category_id' => 'nullable|exists:generic_categories,id',
             'country_id' => 'nullable|exists:countries,id',
-            'status' => 'required|in:active,inactive',
+            'status' => 'required|boolean|in:0,1',
             'validation_status' => 'required|in:pending,approved,rejected',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -63,9 +63,9 @@ class GenericLinkController extends Controller
             'title' => 'required|string|max:255',
             'url' => 'required|url|max:2048',
             'description' => 'nullable|string',
-            'category_id' => 'nullable|exists:categories,id',
+            'category_id' => 'nullable|exists:generic_categories,id',
             'country_id' => 'nullable|exists:countries,id',
-            'status' => 'required|in:active,inactive',
+            'status' => 'required|boolean|in:0,1',
             'validation_status' => 'required|in:pending,approved,rejected',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

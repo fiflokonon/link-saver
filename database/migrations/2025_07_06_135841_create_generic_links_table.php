@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('icon')->nullable();
             $table->foreignId('country_id')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained('generic_categories')->onDelete('cascade');
             $table->foreignId('user_id')->nullable();
             $table->string('validation_status')->default('pending'); // 'pending', 'approved', 'rejected'
             $table->boolean('status')->default(false);

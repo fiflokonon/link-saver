@@ -12,7 +12,7 @@
 <!-- PAGE -->
 <div class="page">
     <div class="page-main">
-
+        @include('partials.back_message')
         <!--{ app header start }-->
         @include('partials.dashboard.header')
         <!--{ app header end }-->
