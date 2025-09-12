@@ -123,9 +123,20 @@
                                                        title="Voir">
                                                         <i class="fe fe-eye"></i>
                                                     </a>
-                                                    <a href="{{ route('generic-links.edit', $link->id) }}"
+
+                                                    <a href="javascript:void(0)"
                                                        class="bg-primary-transparent text-primary p-2 rounded-2 text-center fs-16 me-2"
-                                                       title="Modifier">
+                                                       title="Modifier"
+                                                       data-bs-toggle="modal"
+                                                       data-bs-target="#editGenericLinkModal"
+                                                       data-id="{{ $link->id }}"
+                                                       data-title="{{ $link->title }}"
+                                                       data-description="{{ $link->description }}"
+                                                       data-url="{{ $link->url }}"
+                                                       data-category-id="{{ $link->category_id }}"
+                                                       data-country-id="{{ $link->country_id }}"
+                                                       data-status="{{ $link->status }}"
+                                                       data-validation-status="{{ $link->validation_status }}">
                                                         <i class="fe fe-edit"></i>
                                                     </a>
                                                     <form action="{{ route('generic-links.destroy', $link->id) }}" method="POST" class="d-inline">
