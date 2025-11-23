@@ -26,5 +26,8 @@ class RoleSeeder extends Seeder
               'status' => true
           ]
         ];
+        foreach ($roles as $role) {
+            \App\Models\Role::firstOrCreate($role);
+        }
     }
 }
