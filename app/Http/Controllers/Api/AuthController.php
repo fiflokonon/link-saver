@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -89,13 +90,14 @@ class AuthController extends Controller
                 'message' => 'Erreur de validation',
             ], 422);
         }
-
+        $role = Role::where('code', 'user')->first();
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => $role->id,
         ]);
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
