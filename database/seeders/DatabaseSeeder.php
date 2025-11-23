@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(GenericCategorySeeder::class);
+        $this->call(GenericLinkSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(RoleSeeder::class);
